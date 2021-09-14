@@ -44,11 +44,11 @@ module.exports = {
 				let filter = { username }
 				let res = await this.adapter.model.findOne(filter)
 				if(res) {
-					return `this username is taken: ${username}`;
+					return false;
 				} else {
 					await this.adapter.insert({ username, email, age })
 				}
-				return "new user added!"
+				return true
 			}
 		},
 
@@ -61,9 +61,8 @@ module.exports = {
 				let res = await this.adapter.model.findOne(filter)
 				if(res) {
 					return res
-				} else {
-					return "username not found"
 				}
+				return false
 			}
 		},
 
@@ -79,10 +78,9 @@ module.exports = {
 				let { newUsername, newEmail, newAge } = ctx.params
 				let res = await this.adapter.model.findOneAndUpdate(filter, {username: newUsername, email: newEmail, age: newAge})
 				if(res) {
-					return "user informations updated!"
-				} else {
-					return "user not found"
-				}
+					return true
+				} 
+				return false
 			}
 		},
 
@@ -95,26 +93,9 @@ module.exports = {
 				let res = await this.adapter.model.findOne({username})
 				if(res) {
 					await this.adapter.model.deleteOne({username})
-					return "user deleted"
-				} else {
-					return "user not found"
-				}
-			}
-		},
-
-		/**
-		 * Welcome, a username
-		 *
-		 * @param {String} name - User name
-		 */
-		welcome: {
-			rest: "/welcome",
-			params: {
-				name: "string"
-			},
-			/** @param {Context} ctx  */
-			async handler(ctx) {
-				return `Welcome, ${ctx.params.name}`;
+					return true
+				} 
+				return false
 			}
 		}
 	},
