@@ -16,7 +16,7 @@
   "devDependencies": {
     "jest": "^25.1.0",
     "jest-cli": "^25.1.0",
-    "moleculer-repl": "^0.6.2"
+    "moleculer-repl": "^0.6.6"
   },
   "dependencies": {
     "moleculer": "^0.14.0",

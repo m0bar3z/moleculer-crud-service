@@ -56,7 +56,7 @@ module.exports = {
 
 	// Define transporter.
 	// More info: https://moleculer.services/docs/0.14/networking.html
-	transporter: null,
+	transporter: "NATS",
 
 	// Define a cacher.
 	// More info: https://moleculer.services/docs/0.14/caching.html
