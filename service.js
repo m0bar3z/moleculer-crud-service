@@ -14,7 +14,7 @@
 module.exports = {
 	name: "saveData",
 	mixins: [DbService],
-    adapter: new MongooseAdapter("mongodb://localhost/user-info", { useUnifiedTopology: true }),
+    adapter: new MongooseAdapter("mongodb://mongo/user-info", { useUnifiedTopology: true }),
     model: User,
 	/**
 	 * Settings
